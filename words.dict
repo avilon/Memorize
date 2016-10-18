@@ -1,0 +1,13 @@
+mismatch=несоответствие/несовпадение=choice;0;0#connector;0;0#write;0;0
+assept=принимать=choice;0;0#connector;0;0#write;0;0
+ability=способность=choice;0;0#connector;0;0#write;0;0
+response=ответ=choice;0;0#connector;0;0#write;0;0
+event=событие=choice;0;0#connector;0;0#write;0;0
+spoon=ложка=choice;0;0#connector;0;0#write;0;0
+saw=пила=choice;0;0#connector;0;0#write;0;0
+hammer=молоток=choice;0;0#connector;0;0#write;0;0
+nail=гвоздь=choice;0;0#connector;0;0#write;0;0
+shovel=лопата=choice;0;0#connector;0;0#write;0;0
+book=книга=choice;0;0#connector;0;0#write;0;0
+level=уровень=choice;0;0#connector;0;0#write;0;0
+dive=погружение=choice;0;0#connector;0;0#write;0;0
