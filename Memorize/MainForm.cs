@@ -94,17 +94,21 @@ namespace Memorize
             if (activeForm == null)
                 return;
 
-            WordEditForm wef = new WordEditForm();
-            wef.SetEditMode(EditMode.Update);
-            wef.Caption = wordPack.CurrentItem.Caption;
-            wef.AddValues(wordPack.CurrentItem.Values);
-
-            if (wef.ShowDialog() == DialogResult.OK)
+            if (activeForm.Name == "WordListForm")
             {
-                DictItem di = new DictItem();
-                di.Caption = wef.Caption;
-                di.UpdateValues(wef.Values);
-                wordPack.Update(di);
+
+                WordEditForm wef = new WordEditForm();
+                wef.SetEditMode(EditMode.Update);
+                wef.Caption = wordPack.CurrentItem.Caption;
+                wef.AddValues(wordPack.CurrentItem.Values);
+
+                if (wef.ShowDialog() == DialogResult.OK)
+                {
+                    DictItem di = new DictItem();
+                    di.Caption = wef.Caption;
+                    di.UpdateValues(wef.Values);
+                    wordPack.Update(di);
+                }
             }
         }
 
@@ -112,10 +116,13 @@ namespace Memorize
         {
             if (activeForm == null)
                 return;
-
-            if (MessageBox.Show("Удлить выбранное слово?", "Удаление элемента", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (activeForm.Name == "WordListForm")
             {
-                wordPack.DeleteCurrentItem();
+
+                if (MessageBox.Show("Удлить выбранное слово?", "Удаление элемента", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    wordPack.DeleteCurrentItem();
+                }
             }
         }
 
