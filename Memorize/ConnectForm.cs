@@ -38,7 +38,6 @@ namespace Memorize
                 leftLabels[i].TextAlign = ContentAlignment.MiddleCenter;
                 leftLabels[i].Font = new Font("Tahoma", 12);
                 leftLabels[i].SendToBack();
-                //leftLabels[i].Text = "l_" + i.ToString();
                 leftLabels[i].MouseClick += new System.Windows.Forms.MouseEventHandler(this.AnswerLabelMouseClick);
 
                 tlpWords.Controls.Add(leftLabels[i]);
@@ -49,7 +48,6 @@ namespace Memorize
                 rightLabels[i].TextAlign = ContentAlignment.MiddleCenter;
                 rightLabels[i].Font = new Font("Tahoma", 12);
                 rightLabels[i].SendToBack();
-                //rightLabels[i].Text = "r_" + i.ToString(); 
                 rightLabels[i].MouseClick += new System.Windows.Forms.MouseEventHandler(this.AnswerLabelMouseClick);
                 tlpWords.Controls.Add(leftLabels[i]);
 
@@ -80,6 +78,7 @@ namespace Memorize
                 }
             }
 
+            
             for (int i = 0; i < MAX_VARIANTS_COUNT; i++ )
             {
                 answerWatchers[i].WordIndex = ndx.ElementAt(i);
