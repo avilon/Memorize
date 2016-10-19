@@ -232,7 +232,8 @@ namespace Memorize
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ShowChoiceForm();
+            //ShowChoiceForm();
+            ShowConnectForm();
         }
 
         private void mmDictList_Click(object sender, EventArgs e)

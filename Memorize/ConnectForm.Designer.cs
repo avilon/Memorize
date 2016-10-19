@@ -28,44 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlRight = new System.Windows.Forms.Panel();
-            this.pnlLeft = new System.Windows.Forms.Panel();
+            this.tlpWords = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
-            // pnlRight
+            // tlpWords
             // 
-            this.pnlRight.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRight.Location = new System.Drawing.Point(0, 0);
-            this.pnlRight.Name = "pnlRight";
-            this.pnlRight.Size = new System.Drawing.Size(381, 262);
-            this.pnlRight.TabIndex = 0;
-            // 
-            // pnlLeft
-            // 
-            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlLeft.Location = new System.Drawing.Point(184, 0);
-            this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(197, 262);
-            this.pnlLeft.TabIndex = 1;
+            this.tlpWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpWords.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
+            this.tlpWords.ColumnCount = 2;
+            this.tlpWords.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpWords.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpWords.Location = new System.Drawing.Point(12, 12);
+            this.tlpWords.Name = "tlpWords";
+            this.tlpWords.RowCount = 5;
+            this.tlpWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpWords.Size = new System.Drawing.Size(357, 238);
+            this.tlpWords.TabIndex = 0;
             // 
             // ConnectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 262);
-            this.Controls.Add(this.pnlLeft);
-            this.Controls.Add(this.pnlRight);
+            this.Controls.Add(this.tlpWords);
             this.Name = "ConnectForm";
             this.Text = "ConnectForm";
-            this.Resize += new System.EventHandler(this.ConnectForm_Resize);
+            this.Shown += new System.EventHandler(this.ConnectForm_Shown);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlRight;
-        private System.Windows.Forms.Panel pnlLeft;
+        private System.Windows.Forms.TableLayoutPanel tlpWords;
+
     }
 }

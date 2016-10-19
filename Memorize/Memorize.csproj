@@ -77,6 +77,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\AnswerWatcher.cs" />
     <Compile Include="Model\DictItem.cs" />
     <Compile Include="Model\TestStatistic.cs" />
     <Compile Include="Model\WordPack.cs" />
