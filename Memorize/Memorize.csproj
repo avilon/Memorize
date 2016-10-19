@@ -74,6 +74,7 @@
     <Compile Include="Model\DictItem.cs" />
     <Compile Include="Model\TestStatistic.cs" />
     <Compile Include="Model\WordPack.cs" />
+    <Compile Include="Model\WordSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunner.cs" />

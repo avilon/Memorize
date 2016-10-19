@@ -11,3 +11,15 @@ shovel=лопата=choice;0;0#connector;0;0#write;0;0
 book=книга=choice;0;0#connector;0;0#write;0;0
 level=уровень=choice;0;0#connector;0;0#write;0;0
 dive=погружение=choice;0;0#connector;0;0#write;0;0
+mean=означать=choice;0;0#connector;0;0#write;0;0
+consist=состоит=choice;0;0#connector;0;0#write;0;0
+knife=нож=choice;0;0#connector;0;0#write;0;0
+avoid=избегать=choice;0;0#connector;0;0#write;0;0
+allow=позволять=choice;0;0#connector;0;0#write;0;0
+namely=а именно/в частности=choice;0;0#connector;0;0#write;0;0
+probably=вероятно=choice;0;0#connector;0;0#write;0;0
+deal=сделка=choice;0;0#connector;0;0#write;0;0
+certain=определенный=choice;0;0#connector;0;0#write;0;0
+possible=возможный=choice;0;0#connector;0;0#write;0;0
+order=заказ=choice;0;0#connector;0;0#write;0;0
+adjust=регулировать=choice;0;0#connector;0;0#write;0;0
