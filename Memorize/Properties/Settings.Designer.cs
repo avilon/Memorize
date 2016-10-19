@@ -73,7 +73,7 @@ namespace Memorize.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("E:\\WorkStudio\\Memorize\\words.dict")]
         public string DictFilePath {
             get {
                 return ((string)(this["DictFilePath"]));

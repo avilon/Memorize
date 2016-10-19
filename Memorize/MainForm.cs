@@ -17,13 +17,12 @@ namespace Memorize
         public MainForm()
         {
             InitializeComponent();
-            Init();
+            Init();  
         }
 
         private void Init()
         {
             wordPack = new WordPack();
-            wordPack.dictionaryLoaded = OnDictionaryLoaded;
             wordPack.FilePath = Properties.Settings.Default.DictFilePath;
         }
 
@@ -33,6 +32,14 @@ namespace Memorize
             this.Left = Properties.Settings.Default.MainForm_Left;
             this.Width = Properties.Settings.Default.MainForm_Width;
             this.Height = Properties.Settings.Default.MainForm_Height;
+            if (String.IsNullOrEmpty(Properties.Settings.Default.DictFilePath))
+            {
+                WordSet.Instance().Load(Properties.Settings.Default.DictFilePath);
+            }
+            else
+            {
+                WordSet.Instance().Load(@"E:\WorkStudio\Memorize\words.dict");
+            }
         }
 
         private void SaveSettings()
@@ -41,16 +48,9 @@ namespace Memorize
             Properties.Settings.Default.MainForm_Left = this.Left;
             Properties.Settings.Default.MainForm_Width = this.Width;
             Properties.Settings.Default.MainForm_Height = this.Height;
-            if (wordPack != null)
-            {
-                Properties.Settings.Default.DictFilePath = wordPack.FilePath;
-            }
+            Properties.Settings.Default.DictFilePath = WordSet.Instance().FilePath;
             Properties.Settings.Default.Save();
-
-            if (wordPack != null)
-            {
-                wordPack.Save();
-            }
+            WordSet.Instance().Save();
         }
 
         private void AppendDictionary()
@@ -77,15 +77,8 @@ namespace Memorize
 
             if (activeForm.Name == "WordListForm" )
             {
-                WordEditForm wef = new WordEditForm();
-                wef.SetEditMode(EditMode.Append);
-                if (wef.ShowDialog() == DialogResult.OK)
-                {
-                    DictItem di = new DictItem();
-                    di.Caption = wef.Caption;
-                    di.ReadValues(wef.Values);
-                    wordPack.Add(di);
-                }
+                wordListForm.AddWord();
+                this.lbAppHint.Text = WordSet.Instance().Count.ToString();
             }
         }
 
@@ -96,19 +89,7 @@ namespace Memorize
 
             if (activeForm.Name == "WordListForm")
             {
-
-                WordEditForm wef = new WordEditForm();
-                wef.SetEditMode(EditMode.Update);
-                wef.Caption = wordPack.CurrentItem.Caption;
-                wef.AddValues(wordPack.CurrentItem.Values);
-
-                if (wef.ShowDialog() == DialogResult.OK)
-                {
-                    DictItem di = new DictItem();
-                    di.Caption = wef.Caption;
-                    di.UpdateValues(wef.Values);
-                    wordPack.Update(di);
-                }
+                wordListForm.EditWord();                
             }
         }
 
@@ -118,11 +99,8 @@ namespace Memorize
                 return;
             if (activeForm.Name == "WordListForm")
             {
-
-                if (MessageBox.Show("Удлить выбранное слово?", "Удаление элемента", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    wordPack.DeleteCurrentItem();
-                }
+                wordListForm.DeleteWord();
+                this.lbAppHint.Text = WordSet.Instance().Count.ToString();
             }
         }
 
@@ -140,7 +118,7 @@ namespace Memorize
                                       AnchorStyles.Top;
                 pnlWorkArea.Controls.Add(wordListForm);
                 wordListForm.Dock = DockStyle.Fill;
-                wordListForm.SetWordPack(wordPack);
+                //wordListForm.SetWordPack(wordPack);
             }
             wordListForm.Show();
             wordListForm.BringToFront();
@@ -170,12 +148,6 @@ namespace Memorize
             activeForm = choiceForm;
         }
 
-        private void OnDictionaryLoaded(int count)
-        {
-            this.lbAppHint.Text = count.ToString();
-            ShowWordListForm();
-        }
-
         private WordListForm wordListForm = null;
         private ChoiceForm choiceForm = null;
 
@@ -185,6 +157,10 @@ namespace Memorize
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadSettings();
+            if (WordSet.Instance().Count > 0)
+            {
+                ShowWordListForm();
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

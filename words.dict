@@ -23,3 +23,14 @@ certain=определенный=choice;0;0#connector;0;0#write;0;0
 possible=возможный=choice;0;0#connector;0;0#write;0;0
 order=заказ=choice;0;0#connector;0;0#write;0;0
 adjust=регулировать=choice;0;0#connector;0;0#write;0;0
+overtake=перегнать=choice;0;0#connector;0;0#write;0;0
+roadside=обочина=choice;0;0#connector;0;0#write;0;0
+necessary=необходимый=choice;0;0#connector;0;0#write;0;0
+truth=истина/правда=choice;0;0#connector;0;0#write;0;0
+behavior=поведение=choice;0;0#connector;0;0#write;0;0
+examine=изучать=choice;0;0#connector;0;0#write;0;0
+above=выше=choice;0;0#connector;0;0#write;0;0
+explore=исследовать=choice;0;0#connector;0;0#write;0;0
+follow=следовать=choice;0;0#connector;0;0#write;0;0
+delivery=доставка=choice;0;0#connector;0;0#write;0;0
+hide=скрывать=choice;0;0#connector;0;0#write;0;0

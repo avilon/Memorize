@@ -15,7 +15,7 @@
       <Value Profile="(Default)">500</Value>
     </Setting>
     <Setting Name="DictFilePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">E:\WorkStudio\Memorize\words.dict</Value>
     </Setting>
     <Setting Name="ChoiceVariants" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6</Value>
