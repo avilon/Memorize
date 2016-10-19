@@ -12,6 +12,8 @@ using Memorize.Model;
 
 namespace Memorize
 {
+    public delegate void RoundFinish();
+
     public partial class ChoiceForm : Form
     {
         public ChoiceForm()
@@ -20,9 +22,9 @@ namespace Memorize
             Init();
         }
 
-        public void SetWordPack(WordPack value)
+        public void RegisterRoundFinish(RoundFinish rf)
         {
-            wordPack = value;
+            this.roundFinish += rf;
         }
 
         private void Init()
@@ -102,10 +104,10 @@ namespace Memorize
             int cnt = 0;
             while (cnt < choiceVariants)
             {
-                int next = rand.Next(wordPack.Count);
-                if (!ItemInRange(wordPack[next].Caption))
+                int next = rand.Next(WordSet.Instance().Count);
+                if (!ItemInRange(WordSet.Instance().GetItem(next).Caption))
                 {
-                    items[cnt] = wordPack[next];
+                    items[cnt] = WordSet.Instance().GetItem(next);
                     cnt++;
                 }
             }
@@ -137,19 +139,32 @@ namespace Memorize
             int ndx = (sender as AnswerLabel).Index;
             if (ndx != rightNdx)
             {
-                //MessageBox.Show("Ошибка, попробуйте еще раз", "Crammer");
                 labels[ndx].BackColor = Color.DarkOrange;
+                items[rightNdx].AddTryToTest(false, "choice");
                 return;
+            }
+            items[rightNdx].AddTryToTest(true, "choice");
+            tryCnt++;
+            if (tryCnt >= MAX_TRY_COUNT)
+            {
+                if (roundFinish != null)
+                {
+                    roundFinish();
+                }
             }
             ShowQuestion();
         }
 
-        private WordPack wordPack;
         private int choiceVariants;
         private Random rand;
         private DictItem[] items;
         private AnswerLabel[] labels;
         private int rightNdx = -1;
+        private int tryCnt;
+
+        private RoundFinish roundFinish;
+
+        private static readonly int MAX_TRY_COUNT = 10;
 
         private void ChoiceForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -160,6 +175,7 @@ namespace Memorize
         private void ChoiceForm_Shown(object sender, EventArgs e)
         {
             ShowQuestion();
+            tryCnt = 0;
         }
     }
 }

@@ -140,16 +140,48 @@ namespace Memorize
                                       AnchorStyles.Top;
                 pnlWorkArea.Controls.Add(choiceForm);
                 choiceForm.Dock = DockStyle.Fill;
-            }
-            choiceForm.SetWordPack(wordPack);
 
+                choiceForm.RegisterRoundFinish(this.RoundFinish);
+            }
             choiceForm.Show();
             choiceForm.BringToFront();
             activeForm = choiceForm;
         }
 
+        private void ShowConnectForm()
+        {
+            if (connectForm == null)
+            {
+                connectForm = new ConnectForm();
+                connectForm.TopLevel = false;
+                connectForm.AutoScroll = false;
+                connectForm.FormBorderStyle = FormBorderStyle.None;
+                connectForm.Anchor = AnchorStyles.Left |
+                                      AnchorStyles.Right |
+                                      AnchorStyles.Bottom |
+                                      AnchorStyles.Top;
+                pnlWorkArea.Controls.Add(connectForm);
+                connectForm.Dock = DockStyle.Fill;
+            }
+            connectForm.Show();
+            connectForm.BringToFront();
+            activeForm = connectForm;
+        }
+
+        private void RoundFinish()
+        {
+            if (activeForm != null)
+            {
+                if (activeForm.Name == "ChoiceForm")
+                {
+                    ShowConnectForm();
+                }
+            }
+        }
+
         private WordListForm wordListForm = null;
         private ChoiceForm choiceForm = null;
+        private ConnectForm connectForm = null;
 
         private WordPack wordPack;
         private Form activeForm = null;

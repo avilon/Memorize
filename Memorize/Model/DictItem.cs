@@ -75,6 +75,26 @@ namespace Memorize.Model
             }
         }
 
+        public void AddTryToTest(bool isSuccess, string testName)
+        {
+            for (int i = 0; i < testStatistics.Count; i++)
+            {
+                if (testStatistics[i].GetTestName == testName)
+                {
+                    if (isSuccess)
+                    {
+                        testStatistics[i].AddSuccess();
+                    }
+                    else
+                    {
+                        testStatistics[i].AddFail();
+                    }
+                    break;
+                }
+            }
+        }
+
+
         private void ReadValues(string line)
         {
             values.Clear();

@@ -52,7 +52,7 @@ namespace Memorize.Model
             this.successCount = 0;
         }
 
-        public string TestName
+        public string GetTestName
         {
             get
             {
@@ -68,9 +68,23 @@ namespace Memorize.Model
             }
         }
 
+        public void AddFail()
+        {
+            tryCount++;
+        }
+        public void AddSuccess()
+        {
+            tryCount++;
+            successCount++;
+        }
+        public double GetRaiting()
+        {
+            return Math.Round((double)successCount / tryCount * 100, 2);
+        }
+
         public override string ToString()
         {
-            return TestName + ';' + tryCount.ToString() + ';' + successCount.ToString();
+            return GetTestName + ';' + tryCount.ToString() + ';' + successCount.ToString();
         }
 
         public int TryCount { get { return tryCount; } }
